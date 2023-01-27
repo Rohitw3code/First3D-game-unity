@@ -4,15 +4,42 @@ using UnityEngine;
 
 public class PlayerCollision : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public Color defaultColor;
+    public Color collisionColor;
+
+    public PlayerMovement  playerMovement;
+
+    public Renderer rend;
+
+    public int collisionCount;
+
+
+    private void Start()
     {
-        
+        collisionCount = 0;
+        rend = GetComponent<Renderer>();
+        defaultColor = rend.material.color;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    void OnCollisionStay(Collision collision) {
+        if(collision.collider.tag == "obstacles"){
+            rend.material.color = new Color(250, 0, 0);
+        }
     }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.tag == "obstacles")
+        {
+            collisionCount++;
+            rend.material.color = new Color(250, 0, 0);
+            Debug.Log("Collision count : "+collisionCount);
+//            playerMovement.enabled = false;
+        }
+    }
+
+    private void OnCollisionExit(Collision collision){
+        rend.material.color = defaultColor;
+    }
+
 }

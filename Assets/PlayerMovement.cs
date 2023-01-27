@@ -5,8 +5,9 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public Rigidbody rb;
-    public float farwordForce = 1000f;
-    public float sideForce = 500f;
+    public float farwordForce = 700f;
+    public float sideForce = 100f;
+    public float speed = 5f;
     // Start is called before the first frame update
     void Start(){    
     }
@@ -23,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.W)){
             rb.AddForce(0,0, farwordForce * Time.deltaTime);
+//            transform.position += transform.forward * speed * Time.deltaTime;
         }
     }
 }
