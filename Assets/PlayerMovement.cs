@@ -4,15 +4,25 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public Rigidbody rb;
+    public float farwordForce = 1000f;
+    public float sideForce = 500f;
     // Start is called before the first frame update
-    void Start()
-    {
-        Debug.Log("hello working");
+    void Start(){    
     }
 
     // Update is called once per frame
-    void Update()
+    // All physics attributes are added in 'FixedUpdate'
+    void FixedUpdate()
     {
-        
+        if ( Input.GetKey(KeyCode.A)) {
+            rb.AddForce(-sideForce * Time.deltaTime,0,0);
+        }
+        if (Input.GetKey(KeyCode.D)){
+            rb.AddForce(sideForce * Time.deltaTime, 0, 0);
+        }
+        if (Input.GetKey(KeyCode.W)){
+            rb.AddForce(0,0, farwordForce * Time.deltaTime);
+        }
     }
 }
