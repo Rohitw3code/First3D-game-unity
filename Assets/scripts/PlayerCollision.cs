@@ -34,7 +34,7 @@ public class PlayerCollision : MonoBehaviour
             collisionCount++;
             rend.material.color = new Color(250, 0, 0);
             Debug.Log("Collision count : "+collisionCount);
-            playerMovement.enabled = false;
+           playerMovement.enabled = false;
         }
     }
 /*

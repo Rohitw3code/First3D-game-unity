@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public Rigidbody rb;
-    public float farwordForce = 700f;
+    public float farwordForce = 450f;
     public float sideForce = 100f;
     public float speed = 5f;
     // Start is called before the first frame update
